@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2025 at 12:12 PM
+-- Generation Time: Oct 27, 2025 at 06:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,8 @@ INSERT INTO `tbl_booking` (`booking_id`, `booking_status`, `booking_amount`, `bo
 (1, 6, 300, '2025-10-15', NULL, 1),
 (2, 1, 200, '2025-10-15', NULL, 2),
 (3, 2, 300, '2025-10-15', NULL, 2),
-(4, 1, 400, '2025-10-15', NULL, 2);
+(4, 1, 400, '2025-10-15', NULL, 2),
+(5, 0, NULL, '2025-10-15', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ INSERT INTO `tbl_cart` (`cart_id`, `cart_qty`, `cart_status`, `booking_id`, `foo
 (1, 3, 1, 1, 1),
 (2, 2, 1, 2, 1),
 (3, 3, 1, 3, 1),
-(4, 4, 1, 4, 1);
+(4, 4, 1, 4, 1),
+(5, 1, 0, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -263,10 +265,17 @@ CREATE TABLE `tbl_rating` (
   `user_id` int(11) DEFAULT NULL,
   `restaurant_id` int(11) DEFAULT NULL,
   `food_id` int(11) DEFAULT NULL,
-  `rating_value` int(11) DEFAULT NULL,
-  `rating_comment` varchar(200) DEFAULT NULL,
-  `rating_date` varchar(50) DEFAULT NULL
+  `rating_data` int(11) DEFAULT NULL,
+  `rating_content` varchar(200) DEFAULT NULL,
+  `rating_datetime` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_rating`
+--
+
+INSERT INTO `tbl_rating` (`rating_id`, `user_id`, `restaurant_id`, `food_id`, `rating_data`, `rating_content`, `rating_datetime`) VALUES
+(1, 1, NULL, 1, 4, 'Hey', '2025-10-15 23:06:20');
 
 -- --------------------------------------------------------
 
@@ -308,6 +317,13 @@ CREATE TABLE `tbl_restauranttiming` (
   `opening_time` varchar(50) DEFAULT NULL,
   `closing_time` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_restauranttiming`
+--
+
+INSERT INTO `tbl_restauranttiming` (`restauranttiming_id`, `restaurant_id`, `days_id`, `opening_time`, `closing_time`) VALUES
+(1, 1, 1, '07:00', '10:00');
 
 -- --------------------------------------------------------
 
@@ -469,13 +485,13 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_complaint`
@@ -529,7 +545,7 @@ ALTER TABLE `tbl_place`
 -- AUTO_INCREMENT for table `tbl_rating`
 --
 ALTER TABLE `tbl_rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_restaurant`
@@ -541,7 +557,7 @@ ALTER TABLE `tbl_restaurant`
 -- AUTO_INCREMENT for table `tbl_restauranttiming`
 --
 ALTER TABLE `tbl_restauranttiming`
-  MODIFY `restauranttiming_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `restauranttiming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_restauranttype`
